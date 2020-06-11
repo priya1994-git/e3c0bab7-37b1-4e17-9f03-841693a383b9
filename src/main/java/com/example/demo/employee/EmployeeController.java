@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class EmployeeController {
 	
     //Put your code here
-	public List<Employee> getEmpList(){
-		//Put your code here
-		return null;		
-	}
-	
+	 @Autowired
+	  EmployeeService employeeService;
+
+	  @RequestMapping("/")
+	    public List<Employee> getEmpList(){
+	    List<Employee> empController = employeeService.getEmployees();
+	    Collections.sort(empController);
+	        return empController;
+	    }
 }
